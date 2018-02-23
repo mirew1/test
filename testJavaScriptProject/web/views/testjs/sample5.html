@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sample5</title>
+<script>
+	//한 줄 주석 : script 태그 영역 안에서 사용
+	/*
+		여러 줄 주석 : script 태그 영역 안에서 사용
+	*/
+
+	//전역변수(Global Variable) : 자동 window객체의 멤버변수가 된다.
+	//함수밖에서 만들어지는 변수
+	//함수밖에서는 var을 안붙여도된다.
+	var name = "홍길동";
+	age = 25;
+
+	function testFn(){
+		alert("name : " + /*window.*/name + "\n나이 : " + /*window.*/age);
+
+		//함수 안에서 선언된 변수 : 지역변수(Local Variable)
+		//지역 변수는 선언시에 반드시 앞에 var을 붙인다.
+		//함수 안에서 var 없이 변수 선언하면, 자동 전역변수가 됨
+		var email = "admin@iei.or.kr"; //지역변수
+		address = "서울시 강남구 역삼동 789"; //전역변수
+
+		document.getElementById("area").innerHTML = "이름 : " + name + "<br>나이 : " + 
+		age + "<br>이메일 : " + email + "<br>주소 : " + address;
+
+		testFn2();
+	}
+
+	function testFn2(){
+		document.getElementById("area2").innerHTML ="이름 : " + name + "<br>나이 : " + 
+		age + "<br>주소 : " + address;
+	}
+
+	//웹서버에서 전송된 문서가 브라우저에서 읽어들이기가 완료되면 함수를 실행해라.
+	window.onload = testFn;
+
+</script>
+</head>
+<body>
+	<!-- html 주석 태그임 : 브라우저 상에 보이지 않음
+		페이지 소스 보기로 다 볼 수 있음-->
+	<h1>주석문, 변수, 연산자, 자료형 테스트 페이지</h1>
+	<div id="area" style="width:300px; height:100px; border:1px solid blue;"></div>
+	<hr>
+	<div id="area2" style="width:300px; height:100px; border:1px solid pink;"></div>
+</body>
+</html>
