@@ -3,17 +3,18 @@
 
 header{
 	border-bottom:solid 1px #ccc;
-	
 }
 #top{
-	height:80px;	
+	height:80px;
 	width:1000px;
 	margin:0 auto;
 }
 #top > img {
 	margin-top:10px;	
 }
-
+#right_box{
+	float:right;
+}
 .top_right{
 	float:right;
 	width:224px;
@@ -83,7 +84,7 @@ section{
 	width:224px;
 	height:152px;
 	background:#fff;
-	float:right;	
+	/*float:right;*/	
 	padding:28px 18px;
 }
 #userid, #userpwd{
@@ -144,7 +145,7 @@ section{
 	height:460px;
 	background:#ccc;
 	margin-top:10px;
-	float:right;
+	/*float:right;*/
 	padding:20px;
 }
 
