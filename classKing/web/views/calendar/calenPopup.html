@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link href="css/reset.css" rel="stylesheet" type="text/css">
+<link href="css/main2.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- font awesome -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.lbslider.js"></script>
+
+<title>일정 추가</title>
+
+<style>
+  table {
+    width: 100%;
+    border: 0;
+  }
+  table tr th{
+    border: 0;
+  }
+  table tr td{
+    border: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- 일정추가 시작 -->
+	<div id="cal_board" style="margin: 5px;">
+		<form action="" method="post">
+			<table class="table table-bordered" style="border: 0;">
+				<thread>
+				<caption
+					style="padding-left: 10px; background: #3b64af; color: white;"><i class="far fa-edit">일정추가</i></caption>
+				<tr>
+					<th style="background: #c5cdd7;">선택</th>
+					<td><select name="select_event">
+							<option value="1" selected="">일정</option>
+							<option value="2">생일</option>
+							<option value="3">프로젝트</option>
+							<option value="4">시험</option>
+							<option value="6">기타</option>
+					</select></td>
+				</tr>
+
+				<tr>
+					<th style="background: #c5cdd7;">날짜</th>
+					<td>
+								<select name="addyear">
+										<option value="1" selected="">년도</option>
+										<option value="2">2018</option>
+										<option value="3">2019</option>
+										<option value="4">2020</option>
+								</select>년 &nbsp;
+								<select name="addmonth">
+										<option value="1" selected=""> 월</option>
+										<option value="2">1</option>
+										<option value="3">2</option>
+										<option value="4">3</option>
+										<option value="5">4</option>
+										<option value="6">5</option>
+										<option value="7">6</option>
+										<option value="8">7</option>
+										<option value="9">8</option>
+										<option value="10">9</option>
+										<option value="11">10</option>
+										<option value="12">11</option>
+										<option value="13">12</option>
+								</select>월 &nbsp;
+
+								<select name="addday">
+										<option value="1" selected="">일</option>
+										<option value="2">1</option>
+										<option value="3">2</option>
+										<option value="4">3</option>
+										<option value="5">4</option>
+										<option value="6">5</option>
+										<option value="7">6</option>
+										<option value="8">7</option>
+										<option value="9">8</option>
+										<option value="10">9</option>
+										<option value="11">10</option>
+										<option value="12">11</option>
+										<option value="13">12</option>
+								</select>일 &nbsp;
+								</td>
+							</tr>
+
+						
+				<tr>
+					<th style="background: #c5cdd7;">제목</th>
+					<td><input type="text" name="addcalen" id="addcalen" size="34"></td>
+				</tr>
+				<tr>
+					<th style="background: #c5cdd7;">내용</th>
+					<td><textarea type="text" cols="36" rows="7"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center" style="border:none;"><button style="align: center;">등록</button></td>
+				</tr>
+				</thread>
+			</table>
+		</form>
+	</div>
+	<!-- 일정추가 끝! -->
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#login_box{
+	width:260px;
+	height:208px;
+	background:#fff;
+	padding:28px 18px;
+	font-size:14px;	
+	border: 1px solid #DCDFE4;
+}
+#userid, #userpwd{
+	width:222px;
+	height:32px;
+	padding:8px 12px;
+	font-size:14px;
+}
+#userid{
+	margin-bottom:5px;
+}
+.join{
+	font-size:13px;
+	margin-top:8px;
+}
+.join a{
+	color:#777;
+	font-weight:bold;
+}
+.join > div{
+	float:right;
+	font-size:13px;
+}
+#login_btn{
+	width:224px;
+	height:38px;
+	background:#3b64af;
+	color:white;
+	font-size:16px;
+	border:none;
+	cursor:pointer;
+	margin-top:12px;
+}

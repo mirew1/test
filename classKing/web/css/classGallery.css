@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+/*gallery*/
+.title {
+	font-size: 20px;
+	color: #3b64af;
+	margin-bottom: 20px;
+	float: left;
+}
+
+/* 앨범 */
+.btn.btn-secondary {
+	float: right;
+	/* float:left; */
+}
+
+tr {
+	text-align: center;
+	border-top: 1px solid gray;
+}
+
+td {
+	/* width:100%;
+	height:100%  */
+	margin: 0px;
+	padding: 0px;
+}
+
+.container {
+	width: 700px;
+}
+
+.col-md-4 {
+	margin: 0px auto;
+	padding: 0px;
+	width: 100%;
+}
+
+.thumbnail {
+	width: 200px;
+	height: 200px;
+	padding: 0px;
+	margin: 1px;
+	border: none;
+}
+
+.thumbnail a {
+	width: 100px;
+}
+
+#table_bottom {
+	border-bottom: 1px solid gray;
+}
+
+/* 하단 페이지 번호 */
+#board_searchbox {
+	float: right;
+	overflow: hidden;
+}
+
+.notice_select {
+	width: 80px;
+	float: left;
+	margin-right: 5px;
+	font-size: 14px;
+}
+
+.notice_search {
+	width: 130px;
+	float: left;
+	margin-right: 5px;
+}
+
+#notice_page {
+	float: left;
+	padding-top: 0px;
+}
+
+#notice_page .pagination {
+	margin: 0px
+}
+
+#notice_page>.pagination>li>a {
+	color: #3b64af;
+}
