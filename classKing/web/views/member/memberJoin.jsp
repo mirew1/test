@@ -20,18 +20,17 @@
 	<section>
 		<div id="wrap">
 			<div class="join_form">
-				<form id="mainform">
+				<form id="mainform" action="/classKing/mjoin" method="post" enctype="multipart/form-data">
 					<!--Join_form 구역 내에 mainform을 담았음  -->
 					<div>
 						<div class="page-header">							
 							<h2 align="center" style="color:#777">회원가입</h2>
 						</div>
 						<div>
-							 <form role="form">
 								<div style="text-align: center;">
 						
 									<img src="" id="profile" style="text-align: center"></img>									
-									<input type="file" value="파일선택" id="find" />
+									<input type="file" value="파일선택" id="find" name="upfile"/>
 								</div>
 									<!--파일 찾기  -->
 							<!-- 	</div> -->
@@ -39,7 +38,7 @@
 
 								<div class="form-group">
 									<label for="userId">ID</label><br><input type="text"
-										class="form-control" id="userId" name="userId"
+										class="form-control" id="userId" name="userid"
 										placeholder="ID를 입력해주세요.">
 
 									<div class="form-group text-center">
@@ -54,7 +53,7 @@
 									<!--비밀번호 입력란    -->
 									<label for="InputPwd1">비밀번호를 입력하세요.</label> <input
 										type="password" class="form-control" id="inputPwd1"
-										name="InputPwd1" placeholder="비밀번호">
+										name="userpwd" placeholder="비밀번호">
 								</div>
 
 								<div class="form-group">
@@ -69,42 +68,44 @@
 								<div class="form-group">
 									<!--이름 기입란  -->
 									<label for="userName">이름</label> <input type="text"
-										class="form-control" id="userName" name="userName"
+										class="form-control" id="userName" name="username"
 										placeholder="이름을 입력해 주세요.">
 								</div>
 								<div class="form-group">
 									<!--생년월일 기입란  -->
 									<label for="userBirth">생년월일</label> <input type="text"
-										class="form-control" id="userBirth" name="userBirth"
+										class="form-control" id="userBirth" name="userbirth"
 										placeholder="생년월일 앞 6자리(ex:891205)">
 								</div>
 								<div class="form-group">
 									<!--e-Mail 기입란  -->
 									<label for="userEmail">E-mail</label> <input type="text"
-										class="form-control" id="userEmail" name="userEmail"
+										class="form-control" id="userEmail" name="useremail"
 										placeholder="ex)abcd@naver.com">
+								</div>
+								<div class="form-group">
+									<!--닉네임 기입란  -->
+									<label for="userNickname">닉네임</label> <input type="text"
+										class="form-control" id="usernickname" name="usernickname"
+										placeholder="닉네임">
 								</div>
 								<div class="form-group">
 									<!--option을 주어 미리 준비한 질문을 선택할수있게하였음 임의로 1~10까지의 내용을 기입하였음  -->
 									<label for="optionQ">ID 분실 시 질문 선택</label> <select
-										class="form-control" id="optionQ" name="optionQ">
+										class="form-control" id="optionQ" name="question">
 										<option>==질문 선택==</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-										<option>8</option>
-										<option>9</option>
-										<option>10</option>
+										<option>기억에 남는 영화는?</option>
+										<option>초등학교 시절 가장 친한 친구는?</option>
+										<option>키웠던 애완동물 이름은?</option>
+										<option>기억에 남는 책은?</option>
+										<option>어린 시절 가장 무서워했던 것은?</option>
+										<option>어린 시절 내 별명은?</option>
 									</select>
 								</div>
 								<div class="form-group">
 									<!--위 질문에 대한 답변  -->
 									<label for="userA">정답</label> <input type="text"
-										class="form-control" id="userA" name="userA" placeholder="정답">
+										class="form-control" id="userA" name="answer" placeholder="정답">
 								</div>
 								<div class="form-group text-center">
 									<!--회원가입 버튼과 가입취소 버튼으로 한 div 구역내에 존재함  -->
@@ -113,7 +114,6 @@
 									<input type="reset" class="btn btn-danger" id="cancelBt"
 										name="cancelBt" value="가입취소">
 								</div>
-							</form>
 						</div>
 					</div>
 					<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

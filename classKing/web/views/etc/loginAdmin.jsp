@@ -1,23 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="member.model.vo.Member" %>
+	<%
+		Member loginUser2 = (Member)session.getAttribute("loginUser");
+	%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>login2</title>
+<link href="/classKing/css/adminLogin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="admin_box">
 		<table class="user_table">
 			<tr>
 				<td colspan="2" id="user_img"><img src="images/user.png">
-					<span class="username">김연아님, 반갑습니다.</span></td>
+					<span class="username"><%= loginUser2.getMemberId() %>님, 반갑습니다.</span></td>
 			</tr>
 			<tr>
 				<td><a href="/classKing/views/member/memberMypage.jsp"><img
 						src="images/setting.png"></a>
 				<p>설정</p></td>
-				<td><a href="#"><img src="images/logout.png"></a>
+				<td><a href="/classKing/mlogout"><img src="images/logout.png"></a>
 				<p>로그아웃</p></td>
 			</tr>
 		</table>
@@ -30,7 +35,6 @@
 						class="fas fa-angle-right"></i> 회원 관리</a></li>
 			</ul>
 		</div>
-
 	</div>
 </body>
 </html>
