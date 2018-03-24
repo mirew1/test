@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="member.model.vo.Member"%>
+<%
+	Member loginUser = (Member) session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,8 +46,13 @@
       <div id="wrap">
          <div id="right_box">
             <!-- 로그인박스 시작 -->
-            <%@ include file="../etc/login.jsp" %>
-
+            <% if (loginUser != null && loginUser.getMemberId().equals("admin")) { %>
+					<%@ include file="../etc/loginAdmin.jsp"%>
+				<% } else if (loginUser != null) { %>
+					<%@ include file="../etc/loginMember.jsp" %>
+				<% } else { %>
+					<%@ include file="../etc/login.jsp"%>
+				<% } %>
             <!-- 알람박스 시작 -->
             <div id="alarm_box">알람!</div>
             <!-- 알람박스 끝 -->
