@@ -35,6 +35,8 @@
 				<%@ include file="../etc/login.jsp"%>
 				<% } %>
 				<!-- 로그인박스 끝 -->
+				<input type="submit" name="login_btn" id="login_btn"
+			class="btn btn-primary" value="가입신청">
 				<!-- 알람박스 시작 -->
 				<div id="alarm_box">알람!</div>
 				<!-- 알람박스 끝 -->

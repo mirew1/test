@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+	String url = request.getRequestURL().toString();
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +27,7 @@
 		</div>
 		<input type="submit" name="login_btn" id="login_btn"
 			class="btn btn-primary" value="로그인">
+			<input type="hidden" name="url" value="<%= url %>">
 		</form>
 	</div>
 </body>

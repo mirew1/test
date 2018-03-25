@@ -37,7 +37,7 @@ public class MemberLoginServlet extends HttpServlet {
 		// 2. 전송 온 값 꺼내서 변수에 저장하기
 		String userId = request.getParameter("userid");
 		String userPwd =  CryptoUtils.encryptSHA256(new String (request.getParameter("userpwd")));
-		
+		String url = request.getParameter("url");
 		/* 3. 비즈니스 로직(디비영역)을 처리할 서비스 모델 클래스의
 		로그인 처리용 메소드로 값을 전달하고, 결과를 받을 준비*/
 		Member loginUser = new MemberService().loginCheck(userId,userPwd);
@@ -51,7 +51,7 @@ public class MemberLoginServlet extends HttpServlet {
 			System.out.println("session id : " + session.getId());
 			session.setAttribute("loginUser", loginUser);
 			
-			response.sendRedirect("/classKing/main.jsp");
+			response.sendRedirect(url);
 		}else {
 			response.sendRedirect("/classKing/views/member/memberError.jsp");//직접내보낸다?view?
 		}
@@ -64,5 +64,4 @@ public class MemberLoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

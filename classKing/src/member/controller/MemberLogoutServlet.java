@@ -28,13 +28,15 @@ public class MemberLogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 로그아웃
+		String url = request.getParameter("url");
+        
 		HttpSession session = request.getSession(false);//있으면 가져오고 없으면 null리턴
 		if(session != null) {
 			session.invalidate();
-			response.sendRedirect("/classKing/main.jsp");
+			System.out.println(url);
+			response.sendRedirect(url);
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
