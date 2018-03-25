@@ -11,9 +11,20 @@
 <link href="/classKing/css/reset.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="/classKing/css/join.css" rel="stylesheet" type="text/css">
-
+<script src="/classKing/js/jquery-3.3.1.min.js"></script>
 <title>Class King</title>
+<script>
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
+        reader.onload = function (e) {
+            $('#profile').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 </head>
 <body>
 	<%@ include file="../etc/header2.jsp" %>
@@ -28,14 +39,12 @@
 						</div>
 						<div>
 								<div style="text-align: center;">
-						
 									<img src="" id="profile" style="text-align: center"></img>									
-									<input type="file" value="파일선택" id="find" name="upfile"/>
+									<input type="file" value="파일선택" id="find" name="upfile"
+									onchange="readURL(this);"/>
 								</div>
 									<!--파일 찾기  -->
 							<!-- 	</div> -->
-
-
 								<div class="form-group">
 									<label for="userId">ID</label><br><input type="text"
 										class="form-control" id="userId" name="userid"
