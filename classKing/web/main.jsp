@@ -79,7 +79,7 @@
 				<div id="notice_box">
 					<p>
 						공지사항<span class="btn_more"><a
-							href="/classKing/views/member/notice.jsp">more <i
+							href="/classKing/views/notice/notice.jsp">more <i
 								class="fas fa-angle-right" style="vertical-align: middle;"></i></a></span>
 					</p>
 					<ul>

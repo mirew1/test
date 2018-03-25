@@ -45,7 +45,7 @@
 				<!-- 알람박스 끝 -->
 			</div>
 			<div id="left_box">
-				<%@ include file="../etc/menuBar.jsp"%>
+				
 				<div id="main_box">
 					<div class="board_title">
 						<div class="title">

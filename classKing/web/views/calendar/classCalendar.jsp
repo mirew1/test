@@ -93,9 +93,7 @@
 <title>Class King</title>
 </head>
 <body>
-
    <%@ include file="../etc/header.jsp" %>
-
    <section>
       <div id="wrap">
          <div id="right_box">
@@ -108,7 +106,6 @@
 					<%@ include file="../etc/login.jsp"%>
 				<% } %>
             <!-- 로그인박스 끝 -->
-
             <!-- 알람박스 시작 -->
             <div id="alarm_box">알람!</div>
             <!-- 알람박스 끝 -->

@@ -79,7 +79,7 @@
 								</div>
 								<div class="form-group">
 									<!--e-Mail 기입란  -->
-									<label for="userEmail">E-mail</label> <input type="text"
+									<label for="userEmail">E-mail</label> <input type="email"
 										class="form-control" id="userEmail" name="useremail"
 										placeholder="ex)abcd@naver.com">
 								</div>
