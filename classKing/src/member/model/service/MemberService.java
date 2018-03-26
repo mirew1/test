@@ -22,11 +22,18 @@ public class MemberService {
 
 	public Member loginCheck(String userId, String userPwd) {
 		Connection conn = getConnection();
-		System.out.println("conn : " + conn);
 		Member member = new MemberDao().loginMember(conn, userId, userPwd);
 		close(conn);
 		
 		return member;
+	}
+
+	public Member idCheck(String userid) {
+		Connection conn = getConnection();
+		Member user = new MemberDao().idCheck(conn, userid);
+		close(conn);
+		
+		return user;
 	}
 
 }
