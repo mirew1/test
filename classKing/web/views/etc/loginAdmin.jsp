@@ -3,6 +3,7 @@
 	<%@ page import="member.model.vo.Member" %>
 	<%
 		Member loginUser2 = (Member)session.getAttribute("loginUser");
+		String url = request.getRequestURL().toString();
 	%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,7 @@
 				<td><a href="/classKing/views/member/memberMypage.jsp"><img
 						src="/classKing/images/setting.png"></a>
 				<p>설정</p></td>
-				<td><a href="/classKing/mlogout"><img src="/classKing/images/logout.png"></a>
+				<td><a href="/classKing/mlogout?url=<%= url %>"><img src="/classKing/images/logout.png"></a>
 				<p>로그아웃</p></td>
 			</tr>
 		</table>

@@ -49,7 +49,6 @@ function readURL(input) {
 									<label for="userId">ID</label><br><input type="text"
 										class="form-control" id="userId" name="userid"
 										placeholder="ID를 입력해주세요.">
-
 									<div class="form-group text-center">
 										<input type="button" class="btn btn-info" id="dupliBt"
 											name="dupliBt" value="중복검사"/>
