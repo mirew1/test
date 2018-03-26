@@ -24,6 +24,25 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+$(function(){
+	$("#dupliBt").click(function(){
+		$.ajax({
+			url: "/classKing/idcheck",
+			data: {
+				userid: $("#userId").val()
+			},
+			type: "get",
+			success: function(data){
+				data *= 1;
+				if(data == 1){
+					alert("이미 사용중인 아이디입니다.");
+				}else{
+					alert("사용 가능한 아이디입니다.");
+				}
+			}
+		});
+	});
+});
 </script>
 </head>
 <body>

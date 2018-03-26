@@ -72,4 +72,29 @@ public class MemberDao {
 		return loginUser;
 	}
 
+	public Member idCheck(Connection conn, String userid) {
+		Member user = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM member WHERE member_id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userid);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				user = new Member();
+
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return user;
+	}
+
 }
