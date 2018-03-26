@@ -4,7 +4,7 @@
 	<%
 		Member loginUser2 = (Member)session.getAttribute("loginUser");
 		String url = request.getRequestURL().toString();
-	%>
+	%> 
 <!DOCTYPE html>
 <html>
 <head>
