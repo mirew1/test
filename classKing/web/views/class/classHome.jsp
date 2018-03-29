@@ -13,8 +13,7 @@
 	crossorigin="anonymous">
 <link href="/classKing/css/main.css" rel="stylesheet" type="text/css">
 <link href="/classKing/css/menuBar.css" rel="stylesheet" type="text/css">
-<link href="/classKing/css/classHome.css" rel="stylesheet"
-	type="text/css">
+<link href="/classKing/css/classHome.css" rel="stylesheet" type="text/css">
 <script src="/classKing/js/jquery-3.3.1.min.js"></script>
 
 <script>
@@ -49,99 +48,98 @@ function showClassJoin() {
 				<!--메뉴 및 최신글,최신 이미지 테이블을 담고 있음  -->
 				<%@ include file="../etc/menuBar.jsp"%>
 				<div id="main_box">
-					<!-- <p>최신글</p>    -->
-					<!-- <h2 id="textTitle">최신글</h2> -->
-					<div class="board_title">
-						<div class="title">
-							<i class="fas fa-bullhorn"></i> 최신글
-						</div>
+					<div id="class_name">
+						클래스 이름
 					</div>
-					<!--최신 글의 타이틀-->
-					<table id="textTable" class="table">
-						<!--최신 글 테이블  -->
-						<tr>
-							<th></th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>날짜</th>
-						</tr>
-						<tr class="selectTr">
-							<td>1</td>
-							<td>abcdefghijklmn</td>
-							<td>가나다라마</td>
-							<td>2018-01-01</td>
-						</tr>
-						<tr class="selectTr">
-							<td>2</td>
-							<td>abcdefghijklmn</td>
-							<td>abcdef</td>
-							<td>2018-01-01</td>
-						</tr>
-						<tr class="selectTr">
-							<td>3</td>
-							<td>abcdefghijklmn</td>
-							<td>zxcvb</td>
-							<td>2018-01-01</td>
-						</tr>
-						<tr class="selectTr">
-							<td>4</td>
-							<td>abcdefghijklmn</td>
-							<td>qwerty</td>
-							<td>2018-01-01</td>
-						</tr>
-						<tr class="selectTr">
-							<td>5</td>
-							<td>abcdefghijklmn</td>
-							<td>qwerty</td>
-							<td>2018-01-01</td>
-						</tr>
-					</table>
-					<a href="/classKing/views/board/classBoard.jsp" id="tableButtonA">more</a>
-					<!--최신글의 더보기  -->
-					<br>
+					
+					<div id="main_event">
+						최근공지사항이나, 해당일자의 일정 띄워주기
+					</div>
+					<div class="more_btn">						
+						<a href="">more > </a>
+					</div>		
+					<ul id="classHome_l">						
+					 	<li class="recent_board">
+					 		<div class="recent_title"><a href="">지금 만나러 갑니다.</a></div>
+					 		<div class="recent_cont">
+					 			비가 오는 날 다시 돌아오겠다는 믿기 힘든 약속을 남기고 세상을 떠난 ‘수아’. 
+					 			그로부터 1년 뒤 장마가 시작되는 어느 여름 날, 
+					 			세상을 떠나기 전과 다름없는 모습의 ‘수아’가 나타난다. 
+					 		</div>
+					 		<div>
+					 			<div class="recent_writer">강백호</div>
+					 			<div class="recent_date">2018-03-26</div>
+					 		</div>
+					 		
+					 	</li>					
+					 	<li class="recent_board">
+					 		<div class="recent_title"><a href="">지금 만나러 갑니다.</a></div>
+					 		<div class="recent_cont">
+					 			비가 오는 날 다시 돌아오겠다는 믿기 힘든 약속을 남기고 세상을 떠난 ‘수아’. 
+					 			그로부터 1년 뒤 장마가 시작되는 어느 여름 날, 
+					 		</div>
+					 		<div>
+					 			<div class="recent_writer">강백호</div>
+					 			<div class="recent_date">2018-03-26</div>
+					 		</div>
+					 		
+					 	</li>
+					 	<li class="recent_board" style="margin:0px">
+					 		<div class="recent_title"><a href="">레디 플레이어 원</a></div>
+					 		<div class="recent_cont">
+					 		2045년, 암울한 현실과 달리 가상현실 오아시스(OASIS)에서는 
+							 누구든 원하는 캐릭터로 어디든지 갈 수 있고, 뭐든지 할 수 있고 상상하는 모든 게 가능하다. 
+							 웨이드 와츠(타이 쉐리던) 역시 유일한 낙은 대부분의 사람들이 하루를 보내는 오아시스에 접속하는 것이다. 
+							 어느 날 오아시스의 창시자인 괴짜 천재 제임스 할리데이(마크 라이런스)는 자신이 가상현실 속에 숨겨둔 
+							 3개의 미션에서 우승하는 사람에게 오아시스의 소유권과 막대한 유산을 상속한다는 유언을 남기고, 
+					 		</div>
+					 		<div>
+					 			<div class="recent_writer">강백호</div>
+					 			<div class="recent_date">2018-03-26</div>
+					 		</div>					 		
+					 	</li>					 				
+					</ul>
+					
+					<div class="more_btn">						
+						<a href="">more > </a>
+					</div>	
+					<ul id="classHome_r">						
+					 	<li class="recent_img">
+					 		<div class="thumnail" style="background-image:url('/classKing/images/032.jpg')"></div>
+					 		<div class="img_title"><a href="">레디 플레이어 원</a></div>					 		
+					 		<div class="img_cont">
+					 		2045년, 암울한 현실과 달리 가상현실 오아시스(OASIS)에서는 
+							 누구든 원하는 캐릭터로 어디든지 갈 수 있고, 뭐든지 할 수 있고 상상하는 모든 게 가능하다. 
+					 		</div>
+					 		<div>					 		
+					 			<div class="recent_date">2018-03-26</div>
+					 		</div>					 		
+					 	</li>						
+					 	<li class="recent_img">
+					 		<div class="thumnail" style="background-image:url('/classKing/images/033.jpg')"></div>
+					 		<div class="img_title"><a href="">레디 플레이어 원</a></div>					 		
+					 		<div class="img_cont">
+					 		2045년, 암울한 현실과 달리 가상현실
+					 		</div>
+					 		<div>
+					 			<div class="recent_date">2018-03-26</div>
+					 		</div>					 		
+					 	</li>						
+					 	<li class="recent_img">
+					 		<div class="thumnail" style="background-image:url('/classKing/images/031.jpg')"></div>
+					 		<div class="img_title"><a href="">지만갑</a></div>					 		
+					 		<div class="img_cont">
+					 			비가 오는 날 다시 돌아오겠다는 믿기 힘든 약속을 남기고 세상을 떠난 ‘수아’. 
+					 			그로부터 1년 뒤 장마가 시작되는 어느 여름 날, 
+					 		</div>
+					 		<div>
+					 			<div class="recent_date">2018-03-26</div>
+					 		</div>					 		
+					 	</li>
+					
+					</ul>
 
-					<div class="board_title" style="margin-bottom: 40px;">
-						<div class="title">
-							<i class="fas fa-bullhorn"></i> 최신이미지
-						</div>
-					</div>
-					<div id="my_class" class="slider">
-
-						<ul id="ul_mc" class="owl-carousel owl-theme"
-							style="padding: 0px 0px;">
-							<li class="item">
-								<div class="class_img_top" style="margin: none; padding: none;">
-									<a href="#"> <img src="images/best_c.png">
-									</a>
-								</div>
-								<p>클래스 이름1</p>
-							</li>
-							<li class="item">
-								<div class="class_img_top" style="margin: none; padding: none;">
-									<a href="#"> <img src="images/best_c.png">
-									</a>
-								</div>
-								<p>클래스 이름2</p>
-							</li>
-							<li class="item">
-								<div class="class_img_top" style="margin: none; padding: none;">
-									<a href="#"> <img src="images/best_c.png">
-									</a>
-								</div>
-								<p>클래스 이름3</p>
-							</li>
-							<li class="item">
-								<div class="class_img_top" style="margin: none; padding: none;">
-									<a href="#"> <img src="images/best_c.png">
-									</a>
-								</div>
-								<p>클래스 이름4</p>
-							</li>
-						</ul>
-						<a href="/classKing/views/gallery/classGallery.jsp"
-							id="tableButtonB">more</a>
-					</div>
-					<!-- 최신이미지를 더보기 위한 바로 밑에 위치한 버튼  -->
+					
 					<!-- wrap끝 -->
 				</div>
 			</div>
