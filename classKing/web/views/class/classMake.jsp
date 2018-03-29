@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="member.model.vo.Member"%>
+<%@ page import="member.model.vo.Member"%>
 <%
 	Member loginUser = (Member) session.getAttribute("loginUser");
 %>
@@ -12,6 +12,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="/classKing/css/reset.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css"
+	href="/classKing/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="/classKing/css/demo.css" />
+<link rel="stylesheet" type="text/css"
+	href="/classKing/css/component.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -24,6 +29,20 @@
 	type="text/css">
 
 <title>Class King</title>
+<script src="/classKing/js/jquery-3.3.1.min.js"></script>
+
+<script>
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#profile').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
 </head>
 <body>
 	<%@ include file="../etc/header.jsp"%>
@@ -31,48 +50,55 @@
 		<div id="wrap">
 			<div id="right_box">
 				<!-- 로그인박스 시작 -->
-				<% if (loginUser != null && loginUser.getMemberId().equals("admin")) { %>
-					<%@ include file="../etc/loginAdmin.jsp"%>
-				<% } else if (loginUser != null) { %>
-					<%@ include file="../etc/loginMember.jsp" %>
-				<% } else { %>
-					<%@ include file="../etc/login.jsp"%>
-				<% } %>
+				<%
+					if (loginUser != null && loginUser.getMemberId().equals("admin")) {
+				%>
+				<%@ include file="../etc/loginAdmin.jsp"%>
+				<%
+					} else if (loginUser != null) {
+				%>
+				<%@ include file="../etc/loginMember.jsp"%>
+				<%
+					} else {
+				%>
+				<%@ include file="../etc/login.jsp"%>
+				<%
+					}
+				%>
 				<!-- 로그인박스 끝 -->
-
 				<!-- 알람박스 시작 -->
 				<div id="alarm_box">알람!</div>
 				<!-- 알람박스 끝 -->
 			</div>
 			<div id="left_box">
-				
 				<div id="main_box">
 					<div class="board_title">
 						<div class="title">
 							<i class="fas fa-bullhorn"></i> 클래스 만들기
 						</div>
 					</div>
-					<div class="container">
-						<table class="table table-bordered">
-							<tbody>
-								<form action="write_ok.jsp" method="post"
-									encType="multiplart/form-data">
+					<form action="/classKing/cmake" method="post"
+						encType="multipart/form-data">
+						<div class="container">
+							<table class="table table-bordered">
+								<tbody>
+
 									<tr>
 										<th><label for="InputCategory">Category</label></th>
 										<td><div class="center">
 												<div class='checks'>
-													<input name='category' type='radio' id='sports'
+													<input name='category' type='radio' id='sports' value="01"
 														checked='checked'> <label class='radio-label'>운동</label>
-													<input name='category' type='radio' id='study'> <label
-														class='radio-label'>스터디</label> <input name='category'
-														type='radio' id='company'> <label
-														class='radio-label'> 회사</label> <input name='category'
-														type='radio' id='travel'> <label
-														class='radio-label'> 여행</label> <input name='category'
-														type='radio' id='animal'> <label
-														class='radio-label'> 반려동물</label> <input name='category'
-														type='radio' id='hobby'> <label
-														class='radio-label'> 취미</label>
+													<input name='category' type='radio' id='study' value="02">
+													<label class='radio-label'>스터디</label> <input
+														name='category' type='radio' id='company' value="03">
+													<label class='radio-label'> 회사</label> <input
+														name='category' type='radio' id='travel' value="04">
+													<label class='radio-label'> 여행</label> <input
+														name='category' type='radio' id='animal' value="05">
+													<label class='radio-label'> 반려동물</label> <input
+														name='category' type='radio' id='hobby' value="06">
+													<label class='radio-label'> 취미</label>
 												</div>
 											</div></td>
 									</tr>
@@ -93,492 +119,23 @@
 										<th><label for="InputImage">Image</label></th>
 										<td>
 											<!-- 이미지 슬라이드 -->
-											<div class="container is2">
+											<div style="text-align: center;">
 
-												<!-- #region Jssor Slider Begin -->
-												<!-- Generator: Jssor Slider Maker -->
-												<!-- Source: https://www.jssor.com -->
-												<script src="/classKing/js/jssor.slider-27.1.0.min.js"
-													type="text/javascript"></script>
-												<script type="text/javascript">
-													jssor_1_slider_init = function() {
+												<img src="" id="profile" style="text-align: center"></img><br>
 
-														var jssor_1_SlideshowTransitions = [
-																{
-																	$Duration : 800,
-																	x : 0.3,
-																	$During : {
-																		$Left : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : -0.3,
-																	$SlideOut : true,
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : -0.3,
-																	$During : {
-																		$Left : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : 0.3,
-																	$SlideOut : true,
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : 0.3,
-																	$During : {
-																		$Top : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : -0.3,
-																	$SlideOut : true,
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : -0.3,
-																	$During : {
-																		$Top : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : 0.3,
-																	$SlideOut : true,
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : 0.3,
-																	$Cols : 2,
-																	$During : {
-																		$Left : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$ChessMode : {
-																		$Column : 3
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : 0.3,
-																	$Cols : 2,
-																	$SlideOut : true,
-																	$ChessMode : {
-																		$Column : 3
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : 0.3,
-																	$Rows : 2,
-																	$During : {
-																		$Top : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$ChessMode : {
-																		$Row : 12
-																	},
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : 0.3,
-																	$Rows : 2,
-																	$SlideOut : true,
-																	$ChessMode : {
-																		$Row : 12
-																	},
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : 0.3,
-																	$Cols : 2,
-																	$During : {
-																		$Top : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$ChessMode : {
-																		$Column : 12
-																	},
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	y : -0.3,
-																	$Cols : 2,
-																	$SlideOut : true,
-																	$ChessMode : {
-																		$Column : 12
-																	},
-																	$Easing : {
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : 0.3,
-																	$Rows : 2,
-																	$During : {
-																		$Left : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$ChessMode : {
-																		$Row : 3
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : -0.3,
-																	$Rows : 2,
-																	$SlideOut : true,
-																	$ChessMode : {
-																		$Row : 3
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : 0.3,
-																	y : 0.3,
-																	$Cols : 2,
-																	$Rows : 2,
-																	$During : {
-																		$Left : [
-																				0.3,
-																				0.7 ],
-																		$Top : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$ChessMode : {
-																		$Column : 3,
-																		$Row : 12
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	x : 0.3,
-																	y : 0.3,
-																	$Cols : 2,
-																	$Rows : 2,
-																	$During : {
-																		$Left : [
-																				0.3,
-																				0.7 ],
-																		$Top : [
-																				0.3,
-																				0.7 ]
-																	},
-																	$SlideOut : true,
-																	$ChessMode : {
-																		$Column : 3,
-																		$Row : 12
-																	},
-																	$Easing : {
-																		$Left : $Jease$.$InCubic,
-																		$Top : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	$Delay : 20,
-																	$Clip : 3,
-																	$Assembly : 260,
-																	$Easing : {
-																		$Clip : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	$Delay : 20,
-																	$Clip : 3,
-																	$SlideOut : true,
-																	$Assembly : 260,
-																	$Easing : {
-																		$Clip : $Jease$.$OutCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	$Delay : 20,
-																	$Clip : 12,
-																	$Assembly : 260,
-																	$Easing : {
-																		$Clip : $Jease$.$InCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																},
-																{
-																	$Duration : 800,
-																	$Delay : 20,
-																	$Clip : 12,
-																	$SlideOut : true,
-																	$Assembly : 260,
-																	$Easing : {
-																		$Clip : $Jease$.$OutCubic,
-																		$Opacity : $Jease$.$Linear
-																	},
-																	$Opacity : 2
-																} ];
-
-														var jssor_1_options = {
-															$AutoPlay : 1,
-															$SlideshowOptions : {
-																$Class : $JssorSlideshowRunner$,
-																$Transitions : jssor_1_SlideshowTransitions,
-																$TransitionsOrder : 1
-															},
-															$ArrowNavigatorOptions : {
-																$Class : $JssorArrowNavigator$
-															},
-															$ThumbnailNavigatorOptions : {
-																$Class : $JssorThumbnailNavigator$,
-																$SpacingX : 5,
-																$SpacingY : 5
-															}
-														};
-
-														var jssor_1_slider = new $JssorSlider$(
-																"jssor_1",
-																jssor_1_options);
-
-														/*#region responsive code begin*/
-
-														var MAX_WIDTH = 980;
-
-														function ScaleSlider() {
-															var containerElement = jssor_1_slider.$Elmt.parentNode;
-															var containerWidth = containerElement.clientWidth;
-
-															if (containerWidth) {
-
-																var expectedWidth = Math
-																		.min(
-																				MAX_WIDTH
-																						|| containerWidth,
-																				containerWidth);
-
-																jssor_1_slider
-																		.$ScaleWidth(expectedWidth);
-															} else {
-																window
-																		.setTimeout(
-																				ScaleSlider,
-																				30);
-															}
-														}
-
-														ScaleSlider();
-
-														$Jssor$.$AddEvent(
-																window, "load",
-																ScaleSlider);
-														$Jssor$.$AddEvent(
-																window,
-																"resize",
-																ScaleSlider);
-														$Jssor$
-																.$AddEvent(
-																		window,
-																		"orientationchange",
-																		ScaleSlider);
-														/*#endregion responsive code end*/
-													};
-												</script>
-
-												<div id="jssor_1">
-													<!-- Loading Screen -->
-													<div data-u="loading" class="jssorl-009-spin">
-														<img src="/classKing/images/spin.svg" />
-													</div>
-													<div id="js2" data-u="slides">
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/031.jpg" /> <img
-																data-u="thumb" src="/classKing/images/031-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/032.jpg" /> <img
-																data-u="thumb" src="/classKing/images/032-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/033.jpg" /> <img
-																data-u="thumb" src="/classKing/images/033-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/034.jpg" /> <img
-																data-u="thumb" src="/classKing/images/034-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/035.jpg" /> <img
-																data-u="thumb" src="/classKing/images/035-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/036.jpg" /> <img
-																data-u="thumb" src="/classKing/images/036-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/037.jpg" /> <img
-																data-u="thumb" src="/classKing/images/037-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/038.jpg" /> <img
-																data-u="thumb" src="/classKing/images/038-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/039.jpg" /> <img
-																data-u="thumb" src="/classKing/images/039-s190x90.jpg" />
-														</div>
-														<div data-p="170.00">
-															<img data-u="image" src="/classKing/images/040.jpg" /> <img
-																data-u="thumb" src="/classKing/images/040-s190x90.jpg" />
-														</div>
-													</div>
-													<!-- Thumbnail Navigator -->
-													<div data-u="thumbnavigator" class="jssort101"
-														data-autocenter="1" data-scale-bottom="0.75">
-														<div data-u="slides">
-															<div data-u="prototype" class="p">
-																<div data-u="thumbnailtemplate" class="t"></div>
-																<svg viewbox="0 0 16000 16000" class="cv">
-                        <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
-                        <line class="a" x1="6190.5" y1="8000"
-																		x2="9809.5" y2="8000"></line>
-                        <line class="a" x1="8000" y1="9809.5" x2="8000"
-																		y2="6190.5"></line>
-                    </svg>
-															</div>
-														</div>
-													</div>
-													<!-- Arrow Navigator -->
-													<div data-u="arrowleft" class="jssora106" data-scale="0.75">
-														<svg class="svg1" viewbox="0 0 16000 16000">
-                <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
-                <polyline class="a"
-																points="7930.4,5495.7 5426.1,8000 7930.4,10504.3 "></polyline>
-                <line class="a" x1="10573.9" y1="8000" x2="5426.1"
-																y2="8000"></line>
-            </svg>
-													</div>
-													<div data-u="arrowright" class="jssora106"
-														data-scale="0.75">
-														<svg class="svg1" viewbox="0 0 16000 16000">
-                <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
-                <polyline class="a"
-																points="8069.6,5495.7 10573.9,8000 8069.6,10504.3 "></polyline>
-                <line class="a" x1="5426.1" y1="8000" x2="10573.9"
-																y2="8000"></line>
-            </svg>
-													</div>
-												</div>
-												<script type="text/javascript">
-													jssor_1_slider_init();
-												</script>
-												<!-- #endregion Jssor Slider End -->
+												<input type="file" id="file-1" class="inputfile inputfile-1"
+													data-multiple-caption="{count} files selected"
+													name="upfile" onchange="readURL(this);"
+													style="width: 1px; height: 1px;" /> <label for="file-1"><svg
+														xmlns="http://www.w3.org/2000/svg" width="20" height="17"
+														viewBox="0 0 20 17">
+										<path
+															d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9
+															zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2
+															.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2
+															.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.
+															2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" /></svg>
+													<span>프로필 사진&hellip;</span></label>
 											</div>
 										</td>
 									</tr>
@@ -587,12 +144,12 @@
 										<td>
 											<!-- 비공개/공개 체크박스 -->
 											<div class="checks" style="float: left;">
-												<input type="radio" id="ex_rd" name="ex_rds"> <label
-													for="ex_rd">공개</label>
+												<input type="radio" id="ex_rd" name="ex_rds" value="Y">
+												<label for="ex_rd">공개</label>
 											</div>
 											<div class="checks second" style="float: left;">
-												<input type="radio" id="ex_rd2" name="ex_rds"> <label
-													for="ex_rd2">비공개</label>
+												<input type="radio" id="ex_rd2" name="ex_rds" value="N">
+												<label for="ex_rd2">비공개</label>
 											</div> <!--    <p>
                                           <input type="radio" id="test1" name="radio-group" checked>
                                           <label for="test1">공개</label>
@@ -603,14 +160,14 @@
                                        </p> --> <!-- 비공개/공개 체크박스 끝-->
 										</td>
 									</tr>
-								</form>
-							</tbody>
-						</table>
-						<div class="button">
-							<button type="button" class="btn btn-primary">만들기</button>
+<input type="hidden" value="<%=loginUser.getMemberId() %>" name="memberid">
+								</tbody>
+							</table>
+							<div class="button">
+								<button type="submit" class="btn btn-primary">만들기</button>
+							</div>
 						</div>
-					</div>
-
+					</form>
 				</div>
 			</div>
 		</div>

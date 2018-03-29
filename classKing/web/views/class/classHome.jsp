@@ -17,11 +17,15 @@
 	type="text/css">
 <script src="/classKing/js/jquery-3.3.1.min.js"></script>
 
-
+<script>
+function showClassJoin() {
+	window.open("/classKing/views/class/classJoin.html", "클래스 가입신청", "width=350, height=330, left=100, top=50");
+	window.close();
+}
+</script>
 <title>Class King</title>
 </head>
 <body>
-
 	<%@ include file="../etc/header.jsp"%>
 	<section>
 		<div id="wrap">
@@ -35,7 +39,7 @@
 				<%@ include file="../etc/login.jsp"%>
 				<% } %>
 				<!-- 로그인박스 끝 -->
-				<input type="button" name="login_btn" id="login_btn" onclick="location.href='classApply.jsp'"
+				<input type="button" name="login_btn" id="login_btn" onclick="showClassJoin()"
 			class="btn btn-primary" value="가입신청" style="width:260px">
 				<!-- 알람박스 시작 -->
 				<div id="alarm_box">알람!</div>

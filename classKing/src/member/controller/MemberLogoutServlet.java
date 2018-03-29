@@ -33,7 +33,6 @@ public class MemberLogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);//있으면 가져오고 없으면 null리턴
 		if(session != null) {
 			session.invalidate();
-			System.out.println(url);
 			response.sendRedirect(url);
 		}
 	}

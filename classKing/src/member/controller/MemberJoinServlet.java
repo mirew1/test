@@ -55,8 +55,7 @@ public class MemberJoinServlet extends HttpServlet {
 		String root = request.getSession().getServletContext().getRealPath("/");
 		System.out.println("root : " + root);
 		// 업로드되는 파일이 저장될 폴더명과 루트 경로 연결
-		String savePath = root + "member_upload";
-		System.out.println("savePath : " + savePath);
+		String savePath = root + "/upload/member_upload";
 		// cos.jar 라이브러리를 사용할 경우, MultipartRequest 객체 생성
 		// 객체 생성과 동시에 자동 파일 업로드됨
 		// request 객체는 MultiRequest 객체로 변환됨

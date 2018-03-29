@@ -1,6 +1,19 @@
 @charset "UTF-8";
 
 /*class_Make*/
+#find{ /*파일 찾기 태그  */
+	width:260px;
+	display: block;
+	margin:0 auto;
+
+}
+
+#profile{ /*프로필 사진 태그  */
+
+	width:150px;
+	height:130px;
+	margin:10px 0px;
+}
 .title{
    font-size:20px;
    color:#3b64af;
