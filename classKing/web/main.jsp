@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="member.model.vo.Member"%>
+<%@ page import="member.model.vo.Member,classes.model.vo.Classes,java.util.*"%>
 <%
 	Member loginUser = (Member) session.getAttribute("loginUser");
 %>
@@ -15,7 +15,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <link href="css/main.css" rel="stylesheet" type="text/css">
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="/classKing/js/jquery-3.3.1.min.js"></script>
 <script defer
 	src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
@@ -23,17 +23,45 @@
 <link rel="stylesheet" href="resources/owlcarousel/owl.carousel.css">
 <link rel="stylesheet" href="resources/owlcarousel/owl.carousel.min.css">
 
-<!-- javascript -->
-<script src="resources/owlcarousel/owl.carousel.js"></script>
-<script src="resources/owlcarousel/owl.carousel.min.js"></script>
 
 <script type="text/javascript">
+	
+	
+	;(function($){
+		<% if(loginUser != null){%>
+		$.ajax({
+			url : "/classKing/mclist",
+			data : {memberid : "<%= loginUser.getMemberId() %>"},
+			type : "get",
+			datatype: "json",
+			success : function(data){
+				console.log(data);
+				var jsonStr = JSON.stringify(data);
+				var json = JSON.parse(jsonStr);
+				var values = "";
+				//values = $("#ul_mc").html();
+				for(var i in json.list){
+					values += "<li class='item'><div class='class_img_top' style='margin: none;'><a href='/classKing/sclasses?no="
+							+ json.list[i].no + "'><img style='width:100px;height:100px' src='/classKing/upload/class_upload/" + json.list[i].img +"'></a></div>"
+							+ "<p>" + json.list[i].title +"</p></li>";
+				}
+				//values += "</ul><div class='owl-nav'><div class='btn-prev'><i class='fas fa-caret-left'></i></div>"
+						//+ "<div class='btn-next'><i class='fas fa-caret-right'></i></div></div>";
+				console.log(values);
+				$("#ul_mc").append(values);
+			},erroe(a,b,c){
+				console.log("error: " + a + ", " + b + ", " + c)
+			}
+		});
+		<% } %>
+	})($);
+	//얘를 더 늦게 실행이가능한가?
 	$(document).ready(function() {
 		$('.owl-carousel').owlCarousel({
-			loop : true,
+			//loop : true,
 			nav : true,
 			autoWidth : false,
-			navText : [ $('.btn-next'), $('.btn-prev') ],
+			navText : [ $('.btn-prev'), $('.btn-next') ],
 			responsive : {
 				0 : {
 					items : 1
@@ -49,13 +77,14 @@
 
 	});
 </script>
+<!-- javascript -->
+<script src="resources/owlcarousel/owl.carousel.js"></script>
+<script src="resources/owlcarousel/owl.carousel.min.js"></script>
 
 <title>Class King</title>
 </head>
 <body>
-
 	<%@ include file="views/etc/header.jsp"%>
-
 	<section>
 		<div id="wrap">
 			<div id="right_box">
@@ -101,7 +130,7 @@
 					<div class="card-group">
 						<div class="card">
 							<div class="card-img-top">
-								<img src="images/best_c.png" alt="Card image cap" class="circle">
+								<a href="#"><img src="images/best_c.png" alt="Card image cap" class="circle"></a>
 							</div>
 							<div class="card-body">
 								<h5 class="card-title">클래스 이름</h5>
@@ -143,35 +172,7 @@
 							</div>
 							<p>클래스 만들기</p>
 						</li>
-						<li class="item">
-							<div class="class_img_top" style="margin: none;">
-								<a href="/classKing/views/class/classHome.jsp"> <img
-									src="images/best_c.png">
-								</a>
-							</div>
-							<p>클래스 이름1</p>
-						</li>
-						<li class="item">
-							<div class="class_img_top" style="margin: none;">
-								<a href="#"> <img src="images/best_c.png">
-								</a>
-							</div>
-							<p>클래스 이름2</p>
-						</li>
-						<li class="item">
-							<div class="class_img_top" style="margin: none;">
-								<a href="#"> <img src="images/best_c.png">
-								</a>
-							</div>
-							<p>클래스 이름3</p>
-						</li>
-						<li class="item">
-							<div class="class_img_top" style="margin: none;">
-								<a href="#"> <img src="images/best_c.png">
-								</a>
-							</div>
-							<p>클래스 이름4</p>
-						</li>
+
 					</ul>
 					<div class="owl-nav">
 						<div class="btn-prev">

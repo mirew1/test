@@ -1,6 +1,9 @@
 package member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import classes.model.service.ClassesService;
+import classes.model.vo.Classes;
 import common.CryptoUtils;
 import member.model.service.MemberService;
 import member.model.vo.Member;
@@ -38,6 +43,7 @@ public class MemberLoginServlet extends HttpServlet {
 		String userId = request.getParameter("userid");
 		String userPwd =  CryptoUtils.encryptSHA256(new String (request.getParameter("userpwd")));
 		String url = request.getParameter("url");
+		String url2 = url.substring(32);
 		/* 3. 비즈니스 로직(디비영역)을 처리할 서비스 모델 클래스의
 		로그인 처리용 메소드로 값을 전달하고, 결과를 받을 준비*/
 		Member loginUser = new MemberService().loginCheck(userId,userPwd);
@@ -45,18 +51,18 @@ public class MemberLoginServlet extends HttpServlet {
 		// 4. 받은 결과를 가지고 성공/실패에 따라 뷰를 선택해서 내보냄
 		response.setContentType("text/html; charset=UTF-8"); // 내보낼 값에 한글이있다면 response의 타입을 바꿔준다
 		if(loginUser != null) {
+			
 			//로그인 성공처리 : session 객체 이용
 			HttpSession session = request.getSession();
 			//session.setMaxInactiveInterval(60*30);
-			System.out.println("session id : " + session.getId());
 			session.setAttribute("loginUser", loginUser);
-			
+
 			response.sendRedirect(url);
+			
 		}else {
 			response.sendRedirect("/classKing/views/member/memberError.jsp");//직접내보낸다?view?
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

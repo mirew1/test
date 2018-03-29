@@ -16,10 +16,15 @@
 	<div id="admin_box">
 		<table class="user_table">
 			<tr>
-				<td colspan="2" id="user_img"><img src="/classKing/images/user.png">
+				<td colspan="2" id="user_img"><img src="/classKing/upload/
+				<% if(loginUser1.getMemberRenameImg() != null){ %>
+					member_upload/<%= loginUser1.getMemberRenameImg() %>
+				<% }else{ %>
+					images/user.png
+				<% }%>">
 					<span class="username"><%= loginUser1.getMemberId() %>님, 반갑습니다.</span></td>
 			</tr>
-			<tr>
+			<tr style="border-top:none;">
 				<td><a href="/classKing/views/member/memberMypage.jsp"><img
 						src="/classKing/images/setting.png"></a>
 				<p>설정</p></td>
